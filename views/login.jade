@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    form.form(method='POST', action='/login', enctype='application/x-www-urlencoded')
+        .header Login
+        .content
+            input.text#email(name='email', placeholder="E-mail", type='text')
+            if userInvalid
+                .alert.red That user doesn't exist
+            input.text#pass(name='pass', placeholder="Password",type="password")
+            if passInvalid
+                .alert.red Password incorrect.
+        .footer
+            input.button.green.rectangle(type='submit', value='Login')

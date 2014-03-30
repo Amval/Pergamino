@@ -1,0 +1,18 @@
+extends ../layout
+
+block content
+    form(method="POST", action="/post/create")
+        .row
+            .large-12.columns
+                label(for="title") Title:
+                    input.error#title(name="title", type="text")
+                if userInvalid
+                    small.error That user doesn"t exist
+                br
+                textarea.error#body(name="body")
+                if passInvalid
+                    small.error Password incorrect.
+                label(for="tags") Tags
+                    input.error#tags(name="tags", type="text")
+                br
+                input.button.small.round.success(type="submit", value="Save") 

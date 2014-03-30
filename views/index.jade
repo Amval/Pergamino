@@ -1,0 +1,8 @@
+extends layout
+
+block content
+    each post in posts
+        .panel
+            h4.header
+                a(href="/post/#{post.id}")= post.title
+            .footer by #{post.author} - #{post.date.toGMTString()}

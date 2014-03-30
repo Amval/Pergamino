@@ -1,0 +1,23 @@
+extends ../layout
+
+block content
+    .panel
+        h3.header
+            a(href="/post/#{post.id}")= post.title
+        .content
+            p= post.body
+        .footer by #{post.author} - #{post.date.toGMTString()}
+            a(href="/post/edit/#{post.id}").button.blue.rectangle Edit
+            a(href="/post/delete/#{post.id}").button.red.rectangle Delete
+    
+    each comment in post.comments
+        .panel
+            .content
+                p= comment.text    
+            .footer= comment.author
+    
+    form.form(method='post', action="/post/comment" + post.id)
+        .header Add comment:
+        .content
+            textarea.text(name='text')
+            input.button.green.rectangle(type='submit', value='Save')

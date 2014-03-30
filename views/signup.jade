@@ -1,0 +1,21 @@
+extends layout
+
+block content
+    form.form(method='POST', action='/signup', enctype='application/x-www-urlencoded')
+        .header Sign Up
+        .content
+            input.text#email(name='email', placeholder="E-mail", type='text')
+            if exists
+                .alert.red That e-mail is already being used.
+            if invalidEmail
+                .alert.red Please, introduce a valid email.
+            input.text#name(name='name', placeholder="Name",type='text')
+            if shortName
+                .alert.red Username should be at least 5 characters long.
+            if alreadyChosen
+                .alert.red Username already chosen. Please, select a different one.
+            input.text#pass(name='pass', placeholder="Password",type="password")
+            if shortPassword
+                .alert.red The password length should be at least 6 characters long.
+        .footer  
+            input.button.green.rectangle(type='submit', value='Sign up') 
